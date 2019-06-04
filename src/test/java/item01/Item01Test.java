@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
  * 그렇다고 하더라도 정적 팩터리 메서드를 사용하는 게 유라한 경우가 더 많으므로
  * 무작정 public 생성자를 제공하던 습관이 있다면 고치자.
  */
-public class item01Test {
+public class Item01Test {
 
     @Test
     public void booleanTest() {

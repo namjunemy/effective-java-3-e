@@ -16,7 +16,7 @@ import org.junit.Test;
  * - 한 번에 객체를 생성하므로 객체 일관성이 깨지지 않는다.
  * - build() 함수가 잘못된 값이 입력되었는지 검증하게 할 수도 있다.
  */
-public class item02Test {
+public class Item02Test {
 
     @Test
     @TestDescription("선택적 매개변수가 많을 경우 적절하게 대응하기 어렵다.")
