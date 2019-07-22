@@ -1,4 +1,4 @@
-package item04;
+package chap02.item04;
 
 import java.time.Instant;
 import lombok.experimental.UtilityClass;

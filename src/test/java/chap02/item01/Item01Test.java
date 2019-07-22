@@ -1,4 +1,4 @@
-package item01;
+package chap02.item01;
 
 import common.TestDescription;
 import lombok.AllArgsConstructor;

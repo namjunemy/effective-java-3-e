@@ -1,4 +1,4 @@
-package item05;
+package chap02.item05;
 
 import common.TestDescription;
 import lombok.Getter;

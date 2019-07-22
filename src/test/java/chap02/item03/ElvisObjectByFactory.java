@@ -1,4 +1,4 @@
-package item03;
+package chap02.item03;
 
 import java.util.function.Supplier;
 

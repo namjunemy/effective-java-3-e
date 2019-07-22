@@ -1,4 +1,4 @@
-package item02;
+package chap02.item02;
 
 import common.TestDescription;
 import org.junit.Test;
