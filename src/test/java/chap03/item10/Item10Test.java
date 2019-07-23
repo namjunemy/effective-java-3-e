@@ -33,20 +33,34 @@ import org.junit.Test;
   기본적으로 x.equals(null)dl true가 되는 일은 생각하기 어렵다.
 
 
-## equals 구현 절차
-- 연산자를 사용해 입력된 파라미터와 자기자신이 같은 객체인지 검사한다. (동일성 검사 - Object Identity)
+#### equals 구현 절차
+1 - 연산자를 사용해 입력된 파라미터와 자기자신이 같은 객체인지 검사한다. (동일성 검사 - Object Identity)
     - 성능 향상을 위한 코드
     - equals가 복잡할 때 같은 참조를 가진 객체에 대한 비교를 안하기 위함
-- instanceof 연산자로 파라미터의 타입이 올바른지 체크
+2 - instanceof 연산자로 파라미터의 타입이 올바른지 체크
     - 묵시적 null체크 용도로도 사용
     - equals중에서는 같은 interface를 구현한 클래스끼리도 비교하는 경우가 있다.
-- 입력을 올바른 타입으로 형변환한다.
+3 - 입력을 올바른 타입으로 형변환한다.
     - Object타입의 파라미터를 비교하고자 하는 타입으로 형변환한다.
     - 앞서 instanceof 연산을 수행했기 때문에 100% 성공한다.
-- 파라미터 Object 객체와 자기자신의 대응되는 핵심필드들이 모두 일치하는지 확인한다.
+4 - 파라미터 Object 객체와 자기자신의 대응되는 핵심필드들이 모두 일치하는지 확인한다.
     - 하나라도 다르면 false를 리턴
     - 만약 interface 기반의 비교가 필요하다면 필드정보를 가져오는 메서드가 interface에 정의되어있어야하고,
     - 구현체 클래스에서는 메서드를 재정의 해야한다.
+
+    ### 위를 만족하는 equals 메서드
+    -------------------------------------
+    @Override
+    public boolean equals(Object o) {
+      if (o == this)    // 1번
+        return true;
+      if (!(o instanceof PhoneNumber))    // 2번
+        return false;
+      PhoneNumber pn = (PhoneNumber) o;   // 3번
+      return pn.lineNum == lineNum && pn.prefix == prefix && pn.code == code;  // 4번
+    }
+    -------------------------------------
+
 - float, double을 제외한 기본타입은 ==을 통해 비교
 - 참조(reference) 타입은 equals를 통해 비교
 - float, double은 Float.compare(float, float)와 Double.compare(double, double)로 비교한다.
@@ -57,6 +71,15 @@ import org.junit.Test;
 - 성능을 올리고자 한다면
     - 다를 확률이 높은 필드부터 비교한다.
     - 비교하는 비용(시간복잡도)이 적은 비교를 먼저 수행
+
+
+## 주의사항
+- equals를 재정의 했다면, 대칭성, 추이성, 일관겅에 대한 체크를 꼭 하자(테스트 케이스 작성 요망)
+- equals를 작성할 때는 hashcode도 반드시 재정의하자(Item 11)
+- 너무 복잡하게 해결하려 들지 말자
+- equals의 파라미터는 Object 이외의 타입으로 선언하지 말자 (컴파일 에러 발생)
+- 구글에서 만든 @AutoValue을 이용해서 equals와 hashcode를 자동으로 재정의해보자 (Lombok의 @EqualsAndHashCode도 있다.)
+
  */
 public class Item10Test {
     private final class CaseInsensitiveString {
