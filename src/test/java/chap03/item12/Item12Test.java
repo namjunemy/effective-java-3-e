@@ -3,6 +3,7 @@ package chap03.item12;
 import common.TestDescription;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.Test;
 
@@ -65,6 +66,7 @@ public class Item12Test {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @Getter
     public static class PhoneNumber {
         private Integer areaCode;
         private Integer prefix;
