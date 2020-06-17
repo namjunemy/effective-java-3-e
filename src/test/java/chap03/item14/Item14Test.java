@@ -109,6 +109,13 @@ comparingInt 라는 static 메서드를 import하여 사용하고, 2번째 조�
 thenComparingInt부터는 자바 컴파일러가 충분히 타입을 추론 할 수 있으므로 명시적으로 지정하지 않았다.
 Long 타입과 Double 타입에서는 각각 comparingLong, thenComparingLong이 각각 별도로 있다.
 
+
+정리
+
+순서를 고려해야 하는 값 클래스를 작성한다면 Comparable 인터페이스를 구현해라.
+compareTo 메서드에서 필드의 값을 비교할때 <, > 대신
+박싱된 기본 타입 클래스가 제공하는 정적 compare 메서드나 Comparator 인터페이스가 제공하는 비교자 생성 메서드를 사용하자
+
 reference
 - https://jaehun2841.github.io/2019/01/13/effective-java-item14
 - https://javabom.tistory.com/10?category=833277

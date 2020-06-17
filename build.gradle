@@ -20,5 +20,6 @@ dependencies {
     testCompile("org.projectlombok:lombok:${lombokVersion}")
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile('org.assertj:assertj-core:3.11.1')
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.3.3'
 
 }
